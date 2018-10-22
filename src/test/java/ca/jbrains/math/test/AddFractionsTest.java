@@ -6,7 +6,8 @@ import org.junit.Test;
 public class AddFractionsTest {
     @Test
     public void zeroPlusZero() throws Exception {
-        Assert.assertEquals(0, new Fraction(0).plus(new Fraction(0)).intValue());
+        Fraction sum = new Fraction(0).plus(new Fraction(0));
+        Assert.assertEquals(0, sum.intValue());
     }
 
     public static class Fraction {
