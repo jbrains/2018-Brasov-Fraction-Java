@@ -7,41 +7,37 @@ public class AddFractionsTest {
     @Test
     public void zeroPlusZero() throws Exception {
         Fraction sum = new Fraction(0).plus(new Fraction(0));
-        Assert.assertEquals(0, sum.intValue());
+        Assert.assertEquals(new Fraction(0), sum);
     }
 
     @Test
     public void notZeroPlusZero() throws Exception {
         Fraction sum = new Fraction(3).plus(new Fraction(0));
-        Assert.assertEquals(3, sum.intValue());
+        Assert.assertEquals(new Fraction(3), sum);
     }
 
     @Test
     public void zeroPlusNotZero() throws Exception {
         Fraction sum = new Fraction(0).plus(new Fraction(6));
-        Assert.assertEquals(6, sum.intValue());
+        Assert.assertEquals(new Fraction(6), sum);
     }
 
     @Test
     public void notZeroPlusNotZero() throws Exception {
         Fraction sum = new Fraction(3).plus(new Fraction(6));
-        Assert.assertEquals(9, sum.intValue());
+        Assert.assertEquals(new Fraction(9), sum);
     }
 
     @Test
     public void nonIntegersWithTheSameDenominator() throws Exception {
         Fraction sum = new Fraction(1, 5).plus(new Fraction(2, 5));
-
-        Assert.assertEquals(3, sum.getNumerator());
-        Assert.assertEquals(5, sum.getDenominator());
+        Assert.assertEquals(new Fraction(3, 5), sum);
     }
 
     @Test
     public void differentDenominatorsWithoutReducing() throws Exception {
         Fraction sum = new Fraction(7, 4).plus(new Fraction(3, 5));
-
-        Assert.assertEquals(47, sum.getNumerator());
-        Assert.assertEquals(20, sum.getDenominator());
+        Assert.assertEquals(new Fraction(47, 20), sum);
     }
 
     public static class Fraction {
@@ -76,6 +72,18 @@ public class AddFractionsTest {
 
         public int getDenominator() {
             return denominator;
+        }
+
+        @Override
+        public boolean equals(Object other) {
+            if (other instanceof Fraction) {
+                Fraction that = (Fraction) other;
+
+                return this.numerator * that.denominator == that.numerator * this.denominator;
+            }
+            else {
+                return false;
+            }
         }
     }
 }
