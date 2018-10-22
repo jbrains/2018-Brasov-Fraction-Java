@@ -1,6 +1,7 @@
 package ca.jbrains.math.test;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class AddFractionsTest {
@@ -10,17 +11,26 @@ public class AddFractionsTest {
         Assert.assertEquals(0, sum.intValue());
     }
 
-    public static class Fraction {
-        public Fraction(int integerValue) {
+    @Test
+    @Ignore("refactoring")
+    public void notZeroPlusZero() throws Exception {
+        Fraction sum = new Fraction(3).plus(new Fraction(0));
+        Assert.assertEquals(3, sum.intValue());
+    }
 
+    public static class Fraction {
+        private int integerValue;
+
+        public Fraction(int integerValue) {
+            this.integerValue = integerValue;
         }
 
         public Fraction plus(Fraction other) {
-            return new Fraction(238);
+            return new Fraction(0);
         }
 
         public int intValue() {
-            return 0;
+            return integerValue;
         }
     }
 }
