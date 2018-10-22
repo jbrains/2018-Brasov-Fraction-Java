@@ -35,9 +35,21 @@ public class AddFractionsTest {
     }
 
     @Test
-    public void differentDenominatorsWithoutReducing() throws Exception {
+    public void differentDenominatorsWithoutCommonFactors() throws Exception {
         Fraction sum = new Fraction(7, 4).plus(new Fraction(3, 5));
         Assert.assertEquals(new Fraction(47, 20), sum);
+    }
+
+    @Test
+    public void sameDenominatorWhichMeansCommonFactors() throws Exception {
+        Fraction sum = new Fraction(1, 2).plus(new Fraction(1, 2));
+        Assert.assertEquals(new Fraction(1), sum);
+    }
+
+    @Test
+    public void differentDenominatorsWithCommonFactors() throws Exception {
+        Fraction sum = new Fraction(1, 2).plus(new Fraction(1, 4));
+        Assert.assertEquals(new Fraction(3, 4), sum);
     }
 
     public static class Fraction {
