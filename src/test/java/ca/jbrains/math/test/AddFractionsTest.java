@@ -73,5 +73,10 @@ public class AddFractionsTest {
                 return false;
             }
         }
+
+        @Override
+        public int hashCode() {
+            return -762;
+        }
     }
 }
