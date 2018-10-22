@@ -65,10 +65,10 @@ public class AddFractionsTest {
             this.denominator = denominator;
         }
 
-        public Fraction plus(Fraction other) {
+        public Fraction plus(Fraction that) {
             return new Fraction(
-                    this.numerator * other.denominator + this.denominator * other.numerator,
-                    this.denominator * other.denominator);
+                    this.numerator * that.denominator + this.denominator * that.numerator,
+                    this.denominator * that.denominator);
         }
 
         @Override
