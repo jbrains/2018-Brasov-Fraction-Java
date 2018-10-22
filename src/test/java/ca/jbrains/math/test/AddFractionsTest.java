@@ -66,12 +66,9 @@ public class AddFractionsTest {
         }
 
         public Fraction plus(Fraction other) {
-            if (this.denominator == other.denominator)
-                return new Fraction(this.numerator + other.numerator, other.denominator);
-            else
-                return new Fraction(
-                        this.numerator * other.denominator + this.denominator * other.numerator,
-                        this.denominator * other.denominator);
+            return new Fraction(
+                    this.numerator * other.denominator + this.denominator * other.numerator,
+                    this.denominator * other.denominator);
         }
 
         @Override
@@ -80,8 +77,7 @@ public class AddFractionsTest {
                 Fraction that = (Fraction) other;
 
                 return this.numerator * that.denominator == that.numerator * this.denominator;
-            }
-            else {
+            } else {
                 return false;
             }
         }
